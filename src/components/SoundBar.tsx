@@ -6,12 +6,16 @@ type SoundBarProps = {
 }
 
 const SoundBar: React.FC<SoundBarProps> = ({ volume, threshold }) => {
-    const divRef = useRef<HTMLDivElement>()
-    const barRef = useRef<HTMLSpanElement>()
+    const divRef = useRef<HTMLDivElement>(null)
+    const barRef = useRef<HTMLSpanElement>( null )
 
     useEffect(() => {
         if (volume > 0 && divRef.current) {
             divRef.current.style.height = `${volume}%`
+        }
+
+        if ( !threshold || !divRef.current) {
+            return;
         }
 
         if (volume > threshold) {

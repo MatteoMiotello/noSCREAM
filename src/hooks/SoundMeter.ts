@@ -50,7 +50,7 @@ export class SoundMeter {
 
     public stop() {
         console.log('SoundMeter stopping');
-        this.mic.disconnect();
+        this.mic?.disconnect();
         this.analyser.disconnect();
     }
 }
